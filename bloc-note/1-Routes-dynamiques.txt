@@ -1,0 +1,56 @@
+export default async function ProductDetail({
+  params,
+}: {
+  params: Promise<{ productId: string }>;
+}) {
+  const productId = (await params).productId;
+  return <h2>This is the product {productId}</h2>;
+}
+
+
+Ce code a été créé pour récupérer le producteur IDdontl'URL 
+et voici une explication pourquoi on en fait une fonction 
+asynchrone:
+
+Dans Next.js, les pages peuvent être rendues côté 
+serveur, et les données peuvent être récupérées avant
+que la page ne soit envoyée au client. L'utilisation 
+d'une promesse ici permet de récupérer le productId de
+manière asynchrone, ce qui est utile pour charger des 
+données dynamiques basées sur l'URL (par exemple, un 
+identifiant de produit dans l'URL). Cela garantit que 
+le composant a accès aux données nécessaires avant de 
+les afficher, ce qui améliore l'expérience utilisateur
+en évitant des chargements supplémentaires après le
+rendu initial.
+
+
+Attraper tous les segments:
+avec le nom du ficher [...slug]
+
+app/docs/[...slug]/page.tsx
+
+http://localhost:3000/docs/products/22/reviews/222
+
+=> [ 'products', '22', 'reviews', '222' ]
+
+
+export default async function Docs({
+  params,
+}: {
+  params: Promise<{ slug: string[] }>;
+}) {
+  const { slug } = await params;
+  console.log(slug);
+  return <div>Docs</div>;
+}
+
+=> [ 'products', '22', 'reviews', '222' ]
+
+REMARQUE: 
+
+is en fait http://localhost:3000/docs
+
+Error 404 
+
+Pour la rendre facultative il faut mettre: app/docs/[[...slug]]/page.tsx
