@@ -17,6 +17,8 @@
 /.next/
 /out/
 
+bloc-note-nextjs
+
 # production
 /build
 

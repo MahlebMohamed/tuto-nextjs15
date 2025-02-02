@@ -1,3 +1,3 @@
-export default function Home() {
-  return <h1 className="text-4xl">NextJs15 - tuto!</h1>;
+export default function Page() {
+  return <h1>Home NEXT JS 15 </h1>;
 }
